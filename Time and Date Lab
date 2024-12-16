@@ -1,0 +1,43 @@
+/*
+Bryce Lombardo 
+Time and Date Lab
+12/12/2024
+*/
+
+/*
+Practice with time zones: 
+
+1. If it is 10AM in London. What time is it in Tokyo? What is the UTC offset?
+it will be 7 pm in Tokyo. The UTC offset is +9.
+
+2. What is the UTC offset for Mountain Standard Time?
+The UTC offset for Mountain Standard Time is -7.
+*/
+#include <ctime>
+#include <iostream>
+using namespace std;
+
+int hr;
+int main()
+{
+
+    time_t now = time(nullptr);
+    cout << "Current time: " << ctime(&now);
+
+
+    cout << "How far are you from UTC? " << endl;
+    cin >> hr;
+    time_t localTime = now + hr * 3600;
+    tm* localTm = gmtime(&localTime);
+    cout << "It is " << asctime(localTm) << "by you." << endl;
+
+string answer;
+    cout << "What is 2+2?" << endl;
+    time_t start_time = time(nullptr);
+    cout << "Answer here: ";
+    cin >> answer; 
+    time_t end_time = time(nullptr);
+    double time_taken = difftime(end_time, start_time);
+    cout << "It took you " << time_taken << " seconds to answer." << endl;
+    return 0;
+}
